@@ -1,24 +1,14 @@
-/**
- * About page animations
- * This file contains animations specific to the about page
- */
 import { gsap, ScrollTrigger } from "../vendor";
 
-// Self-executing function to avoid global scope pollution
 (function () {
-  // Initialize when DOM is ready
   function init() {
     console.log("About page animations initialized");
 
-    // Initialize animations
     animateHeader();
     animateTeam();
     animateTimeline();
   }
 
-  /**
-   * Animate header section
-   */
   function animateHeader() {
     const headerSection = document.querySelector(".about-header");
     if (!headerSection) return;
@@ -27,7 +17,6 @@ import { gsap, ScrollTrigger } from "../vendor";
     const headerSubtitle = headerSection.querySelector(".header-subtitle");
     const headerImage = headerSection.querySelector(".header-image");
 
-    // Create timeline
     const tl = gsap.timeline({
       defaults: { ease: "power3.out", duration: 0.8 },
     });
@@ -38,9 +27,6 @@ import { gsap, ScrollTrigger } from "../vendor";
       .from(headerImage, { scale: 0.9, opacity: 0, duration: 1 }, "-=0.4");
   }
 
-  /**
-   * Animate team section
-   */
   function animateTeam() {
     const teamSection = document.querySelector(".about-team");
     if (!teamSection) return;
@@ -48,7 +34,6 @@ import { gsap, ScrollTrigger } from "../vendor";
     const teamTitle = teamSection.querySelector(".section-title");
     const teamMembers = teamSection.querySelectorAll(".team-member");
 
-    // Animate title
     gsap.from(teamTitle, {
       y: 30,
       opacity: 0,
@@ -60,7 +45,6 @@ import { gsap, ScrollTrigger } from "../vendor";
       },
     });
 
-    // Animate team members with stagger
     gsap.from(teamMembers, {
       y: 50,
       opacity: 0,
@@ -74,9 +58,6 @@ import { gsap, ScrollTrigger } from "../vendor";
     });
   }
 
-  /**
-   * Animate timeline section
-   */
   function animateTimeline() {
     const timelineSection = document.querySelector(".about-timeline");
     if (!timelineSection) return;
@@ -84,7 +65,6 @@ import { gsap, ScrollTrigger } from "../vendor";
     const timelineTitle = timelineSection.querySelector(".section-title");
     const timelineItems = timelineSection.querySelectorAll(".timeline-item");
 
-    // Animate title
     gsap.from(timelineTitle, {
       y: 30,
       opacity: 0,
@@ -96,7 +76,6 @@ import { gsap, ScrollTrigger } from "../vendor";
       },
     });
 
-    // Animate timeline items with stagger
     timelineItems.forEach((item, index) => {
       const direction = index % 2 === 0 ? -50 : 50;
 
@@ -113,7 +92,6 @@ import { gsap, ScrollTrigger } from "../vendor";
     });
   }
 
-  // Check if document is already loaded
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
