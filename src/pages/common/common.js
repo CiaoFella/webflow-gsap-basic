@@ -1,4 +1,4 @@
-import { gsap } from "../vendor";
+import { gsap } from "../../vendor";
 
 (function () {
   function init() {
